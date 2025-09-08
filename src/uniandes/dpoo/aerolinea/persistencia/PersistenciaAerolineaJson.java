@@ -60,7 +60,6 @@ public class PersistenciaAerolineaJson implements IPersistenciaAerolinea {
                     String horaLlegada = jr.optString("horaLlegada", "0000");
                     Aeropuerto origen = mapaAeropuertos.get(jr.getString("origen"));
                     Aeropuerto destino = mapaAeropuertos.get(jr.getString("destino"));
-                    // si origen o destino son null, podrías lanzar excepción o registrar con null
                     aerolinea.agregarRuta(new Ruta(codigoRuta, horaSalida, horaLlegada, origen, destino));
                 }
             }
@@ -76,7 +75,7 @@ public class PersistenciaAerolineaJson implements IPersistenciaAerolinea {
                     try {
                         aerolinea.programarVuelo(fecha, codigoRuta, nombreAvion);
                     } catch (Exception e) {
-                        // si algo falla, lo informamos (o lo podés propagar)
+                        
                         System.err.println("No se pudo crear vuelo: " + e.getMessage());
                     }
                 }
